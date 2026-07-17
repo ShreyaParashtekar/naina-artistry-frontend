@@ -14,7 +14,7 @@ function EditProduct() {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:8080/products`)
+fetch(`https://naina-artistry-backend.onrender.com/products`)
       .then((res) => res.json())
       .then((data) => {
         const selectedProduct = data.find(
@@ -36,7 +36,7 @@ function EditProduct() {
   };
 
   const updateProduct = () => {
-    fetch(`http://localhost:8080/products/${id}`, {
+fetch(`https://naina-artistry-backend.onrender.com/products/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
