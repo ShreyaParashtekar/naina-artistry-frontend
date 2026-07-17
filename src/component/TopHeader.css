@@ -1,0 +1,77 @@
+.top-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 70px;
+
+    background:#fff;
+
+    border-bottom:1px solid #ececec;
+}
+
+/* Logo */
+
+.logo{
+    cursor:pointer;
+    line-height:1;
+}
+
+.logo h1{
+    margin:0;
+
+    font-size:42px;
+
+    font-family:Georgia, serif;
+
+    color:#c89b3c;
+
+    letter-spacing:4px;
+
+    font-weight:700;
+}
+
+.logo span{
+    display:block;
+
+    margin-top:4px;
+
+    font-size:14px;
+
+    letter-spacing:7px;
+
+    color:#444;
+
+    text-transform:uppercase;
+}
+
+/* Icons */
+
+.top-icons{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.top-icons div{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    cursor:pointer;
+
+    font-size:26px;
+
+    transition:0.3s ease;
+}
+
+.top-icons div:hover{
+    color:#c89b3c;
+    transform:translateY(-2px);
+}
+
+.top-icons small{
+    font-size:16px;
+    font-weight:600;
+    color:#444;
+}

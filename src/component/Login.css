@@ -1,0 +1,77 @@
+.loginPage{
+    min-height:calc(100vh - 170px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f8f8f8;
+    padding:40px 20px;
+}
+
+.loginCard{
+    width:420px;
+    background:#fff;
+    border-radius:20px;
+    padding:45px;
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+    text-align:center;
+}
+
+.loginCard h2{
+    color:#c9a14a;
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.loginCard p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.loginCard input{
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:16px;
+    box-sizing:border-box;
+    outline:none;
+    transition:.3s;
+}
+
+.loginCard input:focus{
+    border-color:#c9a14a;
+    box-shadow:0 0 10px rgba(201,161,74,.25);
+}
+
+.loginCard button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#c9a14a;
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.loginCard button:hover{
+    background:#b8891d;
+}
+
+.registerLink{
+    margin-top:20px;
+    color:#666;
+}
+
+.registerLink span{
+    color:#c9a14a;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.registerLink span:hover{
+    text-decoration:underline;
+}

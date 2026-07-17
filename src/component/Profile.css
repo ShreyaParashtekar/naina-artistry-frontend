@@ -1,0 +1,42 @@
+.profileContainer{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:90vh;
+    background:#f8f8f8;
+}
+
+.profileCard{
+    width:420px;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.profileHeader{
+    background:linear-gradient(135deg,#111,#333);
+    color:white;
+    text-align:center;
+    padding:35px;
+}
+
+.profileHeader img{
+    width:90px;
+    border-radius:50%;
+    margin-bottom:15px;
+}
+
+.profileMenu div{
+    padding:18px 25px;
+    cursor:pointer;
+    border-bottom:1px solid #eee;
+    transition:.3s;
+    font-size:17px;
+}
+
+.profileMenu div:hover{
+    background:#ff4081;
+    color:white;
+    padding-left:35px;
+}
