@@ -121,10 +121,7 @@ fetch("https://naina-artistry-backend.onrender.com/reviews", {
   return (
     <div style={{ padding: "40px" }}>
 
-      {/* 🔙 BACK */}
-      <button onClick={() => navigate("/home")} style={backBtn}>
-        ← Back
-      </button>
+
 
       <div style={{ display: "flex", gap: "50px", alignItems: "center" }}>
 
