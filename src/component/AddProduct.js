@@ -30,8 +30,16 @@ function AddProduct({ onAdd }) {
        return;
      }
 
-     // 1. Upload image to Cloudinary
      const imageUrl = await uploadImage(image);
+
+     console.log("Cloudinary Image URL:", imageUrl);
+
+     if (!imageUrl) {
+       alert("Image upload failed");
+       return;
+     }
+
+
 
 
      // 2. Create product object
@@ -43,7 +51,6 @@ function AddProduct({ onAdd }) {
        imageUrl: imageUrl,
        stock: Number(stock),
      };
-
 
      // 3. Save product in Spring Boot + MySQL
      await fetch(

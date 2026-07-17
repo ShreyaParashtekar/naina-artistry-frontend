@@ -58,7 +58,7 @@ function Checkout({ cartItems, setCartItems }) {
     0
   );
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     if (cartItems.length === 0) {
       alert("Your cart is empty.");
       return;
@@ -81,7 +81,7 @@ function Checkout({ cartItems, setCartItems }) {
       status: "Placed",
     };
 
-    fetch("https://naina-artistry-backend.onrender.com", {
+    await fetch("https://naina-artistry-backend.onrender.com/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

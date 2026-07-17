@@ -6,12 +6,12 @@ export const uploadImage = async (image) => {
 
   formData.append(
     "upload_preset",
-    "YOUR_UPLOAD_PRESET"
+    "naina_upload"
   );
 
 
   const response = await fetch(
-    "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload",
+    "https://api.cloudinary.com/v1_1/rtxa2tem/image/upload",
     {
       method: "POST",
       body: formData,
@@ -20,6 +20,8 @@ export const uploadImage = async (image) => {
 
 
   const data = await response.json();
+
+  console.log("Cloudinary Response:", data);
 
   return data.secure_url;
 };
