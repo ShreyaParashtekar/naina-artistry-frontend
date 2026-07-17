@@ -6,14 +6,14 @@ function ManageOrders() {
   const [statusFilter, setStatusFilter] = useState("All");
 
   useEffect(() => {
-    fetch("http://localhost:8080/orders")
+    fetch("https://naina-artistry-backend.onrender.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data))
       .catch((err) => console.log(err));
   }, []);
 
   const updateStatus = (order) => {
-    fetch(`http://localhost:8080/orders/${order.id}`, {
+fetch(`https://naina-artistry-backend.onrender.com/orders/${order.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function ManageOrders() {
       return;
     }
 
-    fetch(`http://localhost:8080/orders/${id}`, {
+fetch(`https://naina-artistry-backend.onrender.com/orders/${id}`, {
       method: "DELETE",
     })
       .then(() => {

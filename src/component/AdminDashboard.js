@@ -21,19 +21,19 @@ function AdminDashboard() {
   const [orders, setOrders] = useState([]);
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8080/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+ useEffect(() => {
+   fetch("https://naina-artistry-backend.onrender.com/products")
+     .then((res) => res.json())
+     .then((data) => setProducts(data));
 
-    fetch("http://localhost:8080/orders")
-      .then((res) => res.json())
-      .then((data) => setOrders(data));
+   fetch("https://naina-artistry-backend.onrender.com/orders")
+     .then((res) => res.json())
+     .then((data) => setOrders(data));
 
-    fetch("http://localhost:8080/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+   fetch("https://naina-artistry-backend.onrender.com/users")
+     .then((res) => res.json())
+     .then((data) => setUsers(data));
+ }, []);
 
   const totalProducts = products.length;
   const totalOrders = orders.length;

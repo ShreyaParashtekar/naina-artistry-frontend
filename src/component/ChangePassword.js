@@ -20,7 +20,7 @@ function ChangePassword() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/users/change-password",
+        "https://naina-artistry-backend.onrender.com/users/change-password",
         {
           method: "POST",
           headers: {

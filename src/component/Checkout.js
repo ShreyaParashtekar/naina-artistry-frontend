@@ -81,7 +81,7 @@ function Checkout({ cartItems, setCartItems }) {
       status: "Placed",
     };
 
-    fetch("http://localhost:8080/orders", {
+    fetch("https://naina-artistry-backend.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

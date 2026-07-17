@@ -27,7 +27,7 @@ const currentIndex = products.findIndex(
   const [quantity, setQuantity] = useState(1);
 
  useEffect(() => {
-   fetch("http://localhost:8080/products")
+fetch("https://naina-artistry-backend.onrender.com/products")
      .then((res) => res.json())
      .then((data) => {
        setProducts(data);
@@ -39,7 +39,7 @@ const currentIndex = products.findIndex(
        setLoading(false);
      });
 
-   fetch(`http://localhost:8080/reviews/${id}`)
+fetch(`https://naina-artistry-backend.onrender.com/reviews/${id}`)
      .then((res) => res.json())
      .then((data) => setReviews(data))
      .catch((err) => console.log(err));
@@ -98,24 +98,24 @@ const handleTouchEnd = () => {};
    rating,
  };
 
-    fetch("http://localhost:8080/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setReviews([...reviews, data]);
+fetch("https://naina-artistry-backend.onrender.com/reviews", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(review),
+})
+  .then((res) => res.json())
+  .then((data) => {
+    setReviews([...reviews, data]);
 
-        setUserName("");
-        setComment("");
-        setRating(5);
+    setUserName("");
+    setComment("");
+    setRating(5);
 
-        alert("Review submitted successfully ⭐");
-      })
-      .catch((err) => console.log(err));
+    alert("Review submitted successfully ⭐");
+  })
+  .catch((err) => console.log(err));
   };
 
   return (

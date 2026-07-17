@@ -6,7 +6,7 @@ function ManageProducts() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/products")
+fetch("https://naina-artistry-backend.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.log(err));
@@ -14,7 +14,7 @@ function ManageProducts() {
 
 const navigate = useNavigate();
 const deleteProduct = (id) => {
-  fetch(`http://localhost:8080/products/${id}`, {
+fetch(`https://naina-artistry-backend.onrender.com/products/${id}`, {
     method: "DELETE",
   })
     .then(() => {

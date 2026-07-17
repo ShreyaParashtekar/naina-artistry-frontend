@@ -8,14 +8,14 @@ function Orders() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-      fetch("http://localhost:8080/orders")
+fetch("https://naina-artistry-backend.onrender.com/orders")
         .then((res) => res.json())
         .then((data) => setOrders(data))
         .catch((err) => console.log(err));
     }, []);
 
 const cancelOrder = (id) => {
-  fetch(`http://localhost:8080/orders/${id}`, {
+fetch(`https://naina-artistry-backend.onrender.com/orders/${id}`, {
     method: "DELETE",
   })
     .then(() => {

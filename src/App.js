@@ -181,7 +181,7 @@ const addToCart = (product) => {
  };
 
 const handleAddProduct = () => {
-  fetch("http://localhost:8080/products")
+  fetch("https://naina-artistry-backend.onrender.com/products")
     .then((res) => res.json())
     .then((data) => {
       console.log("Products:", data);

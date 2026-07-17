@@ -5,7 +5,7 @@ function ManageUsers() {
 const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/users")
+fetch("https://naina-artistry-backend.onrender.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.log(err));
@@ -21,7 +21,7 @@ const deleteUser = (id) => {
     return;
   }
 
-  fetch(`http://localhost:8080/users/${id}`, {
+fetch(`https://naina-artistry-backend.onrender.com/users/${id}`, {
     method: "DELETE",
   })
     .then(() => {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { uploadImage } from "../services/cloudinary";
 
 function AddProduct({ onAdd }) {
   const [product, setProduct] = useState({
@@ -19,66 +20,66 @@ function AddProduct({ onAdd }) {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+   e.preventDefault();
 
-    try {
-      const formData = new FormData();
-      formData.append("image", image);
+   try {
 
-      const uploadResponse = await fetch(
-        "http://localhost:8080/products/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+     if (!image) {
+       alert("Please select an image");
+       return;
+     }
 
-      const responseText = await uploadResponse.text();
+     // 1. Upload image to Cloudinary
+     const imageUrl = await uploadImage(image);
 
-      if (!uploadResponse.ok) {
-        alert("Image upload failed");
-        return;
-      }
 
-      const imageUrl = responseText;
+     // 2. Create product object
+     const newProduct = {
+       name: product.name,
+       description: product.description,
+       price: Number(product.price),
+       category: product.category,
+       imageUrl: imageUrl,
+       stock: Number(stock),
+     };
 
-      const newProduct = {
-        name: product.name,
-        description: product.description,
-        price: Number(product.price),
-        category: product.category,
-        imageUrl: imageUrl,
-        stock: Number(stock),
-      };
 
-      await fetch("http://localhost:8080/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newProduct),
-      });
+     // 3. Save product in Spring Boot + MySQL
+     await fetch(
+       "https://naina-artistry-backend.onrender.com/products",
+       {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify(newProduct),
+       }
+     );
 
-      alert("Product Added Successfully 🎉");
 
-      setProduct({
-        name: "",
-        description: "",
-        price: "",
-        category: "",
-        imageUrl: "",
-      });
+     alert("Product Added Successfully 🎉");
 
-      setImage(null);
-      setStock("");
 
-      onAdd();
-    } catch (err) {
-      console.log(err);
-      alert("Failed to add product");
-    }
-  };
+     setProduct({
+       name: "",
+       description: "",
+       price: "",
+       category: "",
+       imageUrl: "",
+     });
+
+     setImage(null);
+     setStock("");
+
+     onAdd();
+
+
+   } catch (err) {
+     console.log(err);
+     alert("Failed to add product");
+   }
+ };
 
   const inputStyle = {
     width: "320px",
@@ -168,7 +169,16 @@ function AddProduct({ onAdd }) {
         <input
           type="file"
           accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => {
+            const selectedImage = e.target.files[0];
+
+            setImage(selectedImage);
+
+            setProduct({
+              ...product,
+              imageUrl: URL.createObjectURL(selectedImage),
+            });
+          }}
           style={{
             ...inputStyle,
             padding: "8px",
