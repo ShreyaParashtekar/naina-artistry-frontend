@@ -14,7 +14,7 @@
 
 .product-image-section {
   flex: 1;
-  min-width: 300px;
+  min-width: 0;
   text-align: center;
   position: relative;
 }
@@ -29,7 +29,7 @@
 
 .product-info {
   flex: 1;
-  min-width: 300px;
+  min-width: 0;
 }
 
 .product-info h2 {
@@ -173,53 +173,34 @@
 @media (max-width:768px){
 
 .product-detail{
-    padding:20px;
-}
-
-.product-container{
-    flex-direction:column;
-    gap:30px;
+    padding:15px;
 }
 
 .product-image{
-    max-width:300px;
-}
-
-.product-info{
-    text-align:center;
-}
-
-.product-info h2{
-    font-size:26px;
-}
-
-.price{
-    font-size:24px;
-}
-
-.quantity-box{
-    justify-content:center;
-}
-
-.action-buttons{
-    flex-direction:column;
-}
-
-.cart-btn,
-.buy-btn{
     width:100%;
-}
-
-.related-grid{
-    justify-content:center;
+    max-width:280px;
 }
 
 .related-card{
-    width:140px;
+    width:45%;
+    max-width:160px;
 }
 
-.arrow-btn{
-    padding:8px;
+.product-info{
+    width:100%;
+    text-align:center;
+}
+
+.review-form{
+    width:100%;
+    box-sizing:border-box;
+}
+
+.review-form input,
+.review-form textarea,
+.review-form select{
+    box-sizing:border-box;
+}
 }
 
 .review-form{
