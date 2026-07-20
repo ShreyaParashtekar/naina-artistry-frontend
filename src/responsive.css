@@ -1,0 +1,78 @@
+/* ===========================
+   TABLETS
+=========================== */
+
+@media (max-width: 992px) {
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card {
+    width: 100% !important;
+  }
+
+  .product-image {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  input,
+  select {
+    width: 100%;
+  }
+
+}
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media (max-width:480px){
+
+  h1{
+    font-size:28px;
+  }
+
+  h2{
+    font-size:22px;
+  }
+
+  h3{
+    font-size:18px;
+  }
+
+  p{
+    font-size:14px;
+  }
+
+}

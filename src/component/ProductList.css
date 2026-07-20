@@ -1,91 +1,118 @@
-
-.products-section {
-  padding: 30px;
+.product-detail-page{
+    padding:40px;
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 25px;
+.product-detail-container{
+    display:flex;
+    gap:50px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+.product-image-container{
+    position:relative;
+    overflow:hidden;
+    border-radius:12px;
 }
 
-.card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.product-image{
+    width:350px;
+    max-width:100%;
+    border-radius:10px;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.product-info{
+    flex:1;
+    min-width:300px;
 }
 
-.image-container {
-  position: relative;
+.related-products{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
-.product-image {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
+.related-card{
+    cursor:pointer;
+    text-align:center;
 }
 
-.card-body {
-  padding: 15px;
+.related-card img{
+    width:120px;
+    border-radius:8px;
 }
 
-.cart-btn,
-.stock-btn {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+.review-form{
+    border:1px solid #ddd;
+    padding:20px;
+    border-radius:10px;
+    margin:30px 0;
 }
 
-.cart-btn {
-  background: #ff4081;
-  color: white;
+.review-form input,
+.review-form select,
+.review-form textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
 }
 
-.stock-btn {
-  background: gray;
-  color: white;
+.review-card{
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
 }
 
-.wishlist-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
+/* Tablet */
+
+@media(max-width:992px){
+
+.product-detail-container{
+    flex-direction:column;
 }
 
-@media (max-width: 768px) {
-  .products-section {
-    padding: 15px;
-  }
+.product-info{
+    text-align:center;
+}
 
-  .section-title {
-    font-size: 24px;
-  }
+}
 
-  .product-image {
-    height: 220px;
-  }
+/* Mobile */
 
-  .card-body h2 {
-    font-size: 20px;
-  }
+@media(max-width:768px){
 
-  .card-body h3 {
-    font-size: 18px;
-  }
+.product-detail-page{
+    padding:20px;
+}
+
+.product-image{
+    width:100%;
+}
+
+.related-products{
+    justify-content:center;
+}
+
+.related-card img{
+    width:90px;
+}
+
+}
+
+/* Small Phones */
+
+@media(max-width:480px){
+
+.product-detail-page h2{
+    font-size:24px;
+}
+
+.product-detail-page h3{
+    font-size:20px;
+}
+
 }

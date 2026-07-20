@@ -1,43 +1,43 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Cart.css";
 
 function Cart({ cartItems, setCartItems }) {
   const navigate = useNavigate();
 
-  // 💰 total price
- const total = cartItems.reduce((sum, item) => {
-   return sum + (Number(item.price) || 0) * (Number(item.quantity) || 1);
- }, 0);
+  // Total Price
+  const total = cartItems.reduce((sum, item) => {
+    return sum + (Number(item.price) || 0) * (Number(item.quantity) || 1);
+  }, 0);
 
-  // ❌ remove item
+  // Remove Item
   const handleRemove = (indexToRemove) => {
     const updated = cartItems.filter((_, i) => i !== indexToRemove);
     setCartItems(updated);
   };
 
-  // ➕ increase qty
- const increaseQty = (id) => {
-   setCartItems((prevItems) =>
-     prevItems.map((item) => {
-       if (item.id === id) {
+  // Increase Quantity
+  const increaseQty = (id) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) => {
+        if (item.id === id) {
+          if (item.quantity >= item.stock) {
+            alert(`Only ${item.stock} item(s) available in stock.`);
+            return item;
+          }
 
-         if (item.quantity >= item.stock) {
-           alert(`Only ${item.stock} item(s) available in stock.`);
-           return item;
-         }
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
 
-         return {
-           ...item,
-           quantity: item.quantity + 1,
-         };
-       }
+        return item;
+      })
+    );
+  };
 
-       return item;
-     })
-   );
- };
-
-  // ➖ decrease qty
+  // Decrease Quantity
   const decreaseQty = (id) => {
     setCartItems(
       cartItems
@@ -50,149 +50,94 @@ function Cart({ cartItems, setCartItems }) {
     );
   };
 
-console.log(cartItems);
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "20px",
-        justifyContent: "center",
-        padding: "20px",
-      }}
-    >
-      {/* 🛒 LEFT SIDE */}
-      <div
-        style={{
-          flex: "2",
-          minWidth: "300px",
-        }}
-      >
+    <div className="cart-page">
 
+      {/* LEFT SIDE */}
+      <div className="cart-left">
 
         <h2>🛒 Your Cart</h2>
 
         {cartItems.length === 0 ? (
-          <p>Your cart is empty</p>
+          <p>Your cart is empty.</p>
         ) : (
           cartItems.map((item, index) => (
-            <div
-              key={item.id}
-             style={{
-                 display: "flex",
-                 flexWrap: "wrap",
-                 alignItems: "center",
-                 gap: "15px",
-                 marginBottom: "20px",
-                background: "white",
-                padding: "15px",
-                borderRadius: "10px",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-              }}
-            >
+            <div className="cart-item" key={item.id}>
+
               <img
                 src={item.imageUrl}
                 alt={item.name}
-                style={{
-                  width: "100%",
-                  maxWidth: "120px",
-                  height: "auto",
-                  objectFit: "cover",
-                  borderRadius: "10px",
-                  marginRight: "20px",
-                }}
+                className="cart-image"
               />
 
-              {/* 📦 DETAILS */}
-             <div
-               style={{
-                 flex: 1,
-                 minWidth: "200px",
-               }}
-             >
+              <div className="cart-details">
+
                 <h3>{item.name}</h3>
+
                 <p>₹{item.price}</p>
 
-                {/* 🔢 QUANTITY */}
-                <div style={{ display: "flex", alignItems: "center" }}>
-<button
-  onClick={() => decreaseQty(item.id)}
-  style={{
-    width: "35px",
-    height: "35px",
-    fontSize: "18px",
-    cursor: "pointer",
-  }}
->
-  -
-</button>
-                  <span style={{ margin: "0 10px" }}>
+                <div className="qty-box">
+
+                  <button
+                    className="qty-btn"
+                    onClick={() => decreaseQty(item.id)}
+                  >
+                    -
+                  </button>
+
+                  <span className="qty-text">
                     {item.quantity}
                   </span>
 
-                  <button onClick={() => increaseQty(item.id)}>
+                  <button
+                    className="qty-btn"
+                    onClick={() => increaseQty(item.id)}
+                  >
                     +
                   </button>
+
                 </div>
 
-                {/* ❌ REMOVE */}
                 <button
+                  className="remove-btn"
                   onClick={() => handleRemove(index)}
-                  style={{
-                    marginTop: "10px",
-                    background: "red",
-                    color: "white",
-                    border: "none",
-                    padding: "5px 10px",
-                    borderRadius: "5px",
-                  }}
                 >
                   Remove
                 </button>
+
               </div>
 
-              {/* 💰 ITEM TOTAL */}
-              <h3>₹{item.price * item.quantity}</h3>
+              <h3 className="item-total">
+                ₹{item.price * item.quantity}
+              </h3>
+
             </div>
           ))
         )}
+
       </div>
 
-      {/* 💳 RIGHT SIDE */}
-      <div
-        style={{
-          flex: "1",
-          minWidth: "280px",
-          background: "white",
-          padding: "20px",
-          borderRadius: "10px",
-          height: "fit-content",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-        }}
-      >
+      {/* RIGHT SIDE */}
+
+      <div className="cart-summary">
+
         <h3>Order Summary</h3>
+
         <hr />
 
         <p>Total Items: {cartItems.length}</p>
+
         <h2>Total: ₹{total}</h2>
 
         <button
+          className="checkout-btn"
           onClick={() => navigate("/checkout")}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginTop: "15px",
-            background: "#ff4081",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            fontSize: "16px",
-            cursor: "pointer",
-          }}
         >
           Proceed to Checkout 🛒
         </button>
+
       </div>
+
     </div>
   );
 }

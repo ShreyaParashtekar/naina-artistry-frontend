@@ -26,6 +26,9 @@ import Footer from "./component/Footer";
 import Address from "./component/Address";
 import ChangePassword from "./component/ChangePassword";
 import HomePage from "./component/HomePage";
+import "./responsive.css";
+
+
 
 function CategoryPage({
   products,

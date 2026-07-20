@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import "./ProductDetail.css";
 
 function ProductDetail({ addToCart }) {
 
@@ -119,40 +120,31 @@ fetch("https://naina-artistry-backend.onrender.com/reviews", {
   };
 
   return (
-    <div style={{ padding: "40px" }}>
+    <div className="product-detail-page">
 
 
 
-     <div
-       style={{
-         display: "flex",
-         flexWrap: "wrap",
-         gap: "30px",
-         alignItems: "center",
-         justifyContent: "center"
-       }}
-     >
+    <div className="product-detail-container">
 
         {/* 🖼 IMAGE SECTION */}
-        <div
-          style={imageContainer}
+        <div className="product-image-container">
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
           {/* ⬅ PRODUCT */}
           <button onClick={prevProduct} style={arrowLeft}>◀</button>
 
-       <img
-         src={product.imageUrl}
-         alt={product.name}
-         style={imageStyle}
-       />
+      <img
+        src={product.imageUrl}
+        alt={product.name}
+        className="product-image"
+      />
           {/* ➡ PRODUCT */}
           <button onClick={nextProduct} style={arrowRight}>▶</button>
         </div>
 
         {/* 📦 DETAILS */}
-        <div>
+        <div className="product-info">
           <h2>{product.name}</h2>
 
           <div style={{ color: "gold" }}>⭐⭐⭐⭐⭐</div>
@@ -194,14 +186,14 @@ fetch("https://naina-artistry-backend.onrender.com/reviews", {
       {/* 💎 RELATED PRODUCTS */}
       <h3 style={{ marginTop: "40px" }}>Related Products 💎</h3>
 
-      <div style={{ display: "flex", gap: "20px" }}>
+      <div className="related-products">
         {products
           .filter(p => p.id !== product.id)
           .slice(0, 3)
           .map(item => (
             <div
               key={item.id}
-              style={{ cursor: "pointer" }}
+              className="related-card"
               onClick={() => navigate(`/product/${item.id}`)}
             >
               <img src={item.imageUrl} alt="" style={{ width: "120px" }} />
@@ -211,15 +203,7 @@ fetch("https://naina-artistry-backend.onrender.com/reviews", {
       </div>
 <h2 style={{ marginTop: "40px" }}>Customer Reviews ⭐</h2>
 
-<div
-  style={{
-    border: "1px solid #ddd",
-    borderRadius: "10px",
-    padding: "20px",
-    marginTop: "20px",
-    marginBottom: "30px",
-  }}
->
+<div className="review-form">
   <h3>Write a Review</h3>
 
   <input
@@ -284,12 +268,7 @@ fetch("https://naina-artistry-backend.onrender.com/reviews", {
   reviews.map((review) => (
     <div
       key={review.id}
-      style={{
-        border: "1px solid #ddd",
-        padding: "15px",
-        marginBottom: "15px",
-        borderRadius: "10px",
-      }}
+      className="review-card"
     >
       <h4>{review.userName}</h4>
 
