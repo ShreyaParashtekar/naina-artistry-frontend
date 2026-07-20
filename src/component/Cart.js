@@ -55,12 +55,19 @@ console.log(cartItems);
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between",
-        padding: "30px",
+        flexWrap: "wrap",
+        gap: "20px",
+        justifyContent: "center",
+        padding: "20px",
       }}
     >
       {/* 🛒 LEFT SIDE */}
-      <div style={{ width: "65%" }}>
+      <div
+        style={{
+          flex: "2",
+          minWidth: "300px",
+        }}
+      >
 
 
         <h2>🛒 Your Cart</h2>
@@ -71,9 +78,12 @@ console.log(cartItems);
           cartItems.map((item, index) => (
             <div
               key={item.id}
-              style={{
-                display: "flex",
-                marginBottom: "20px",
+             style={{
+                 display: "flex",
+                 flexWrap: "wrap",
+                 alignItems: "center",
+                 gap: "15px",
+                 marginBottom: "20px",
                 background: "white",
                 padding: "15px",
                 borderRadius: "10px",
@@ -84,8 +94,9 @@ console.log(cartItems);
                 src={item.imageUrl}
                 alt={item.name}
                 style={{
-                  width: "120px",
-                  height: "120px",
+                  width: "100%",
+                  maxWidth: "120px",
+                  height: "auto",
                   objectFit: "cover",
                   borderRadius: "10px",
                   marginRight: "20px",
@@ -93,14 +104,28 @@ console.log(cartItems);
               />
 
               {/* 📦 DETAILS */}
-              <div style={{ flex: 1 }}>
+             <div
+               style={{
+                 flex: 1,
+                 minWidth: "200px",
+               }}
+             >
                 <h3>{item.name}</h3>
                 <p>₹{item.price}</p>
 
                 {/* 🔢 QUANTITY */}
                 <div style={{ display: "flex", alignItems: "center" }}>
-                  <button onClick={() => decreaseQty(item.id)}>-</button>
-
+<button
+  onClick={() => decreaseQty(item.id)}
+  style={{
+    width: "35px",
+    height: "35px",
+    fontSize: "18px",
+    cursor: "pointer",
+  }}
+>
+  -
+</button>
                   <span style={{ margin: "0 10px" }}>
                     {item.quantity}
                   </span>
@@ -136,7 +161,8 @@ console.log(cartItems);
       {/* 💳 RIGHT SIDE */}
       <div
         style={{
-          width: "30%",
+          flex: "1",
+          minWidth: "280px",
           background: "white",
           padding: "20px",
           borderRadius: "10px",

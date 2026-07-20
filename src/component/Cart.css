@@ -1,0 +1,18 @@
+@media (max-width: 768px) {
+  .cart-page {
+    flex-direction: column;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-summary {
+    width: 100%;
+  }
+
+  .cart-image {
+    max-width: 180px;
+  }
+}

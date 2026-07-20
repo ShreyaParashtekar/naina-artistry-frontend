@@ -123,7 +123,15 @@ fetch("https://naina-artistry-backend.onrender.com/reviews", {
 
 
 
-      <div style={{ display: "flex", gap: "50px", alignItems: "center" }}>
+     <div
+       style={{
+         display: "flex",
+         flexWrap: "wrap",
+         gap: "30px",
+         alignItems: "center",
+         justifyContent: "center"
+       }}
+     >
 
         {/* 🖼 IMAGE SECTION */}
         <div
@@ -311,7 +319,9 @@ const imageContainer = {
 };
 
 const imageStyle = {
-  width: "350px",
+  width: "100%",
+  maxWidth: "350px",
+  height: "auto",
 };
 
 const arrowLeft = {
