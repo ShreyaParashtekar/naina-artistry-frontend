@@ -79,3 +79,44 @@
 }
 
 }
+
+.cart-page{
+    display:flex;
+    gap:30px;
+    padding:40px;
+    align-items:flex-start;
+}
+
+.cart-left{
+    flex:3;
+}
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    background:#fff;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+/* THIS IS THE IMPORTANT PART */
+.cart-image{
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:12px;
+    flex-shrink:0;
+}
+
+.cart-summary{
+    flex:1;
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    position:sticky;
+    top:20px;
+}
