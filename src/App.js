@@ -138,9 +138,8 @@ const addToCart = (product) => {
   setCartItems((prev) => {
     const existing = prev.find((item) => item.id === product.id);
 
-    // If product already exists in cart
     if (existing) {
-      // Check stock
+
       if (existing.quantity >= product.stock) {
         alert(`Only ${product.stock} item(s) available in stock.`);
         return prev;
@@ -156,7 +155,6 @@ const addToCart = (product) => {
       );
     }
 
-    // New product
     if (product.stock <= 0) {
       alert("Product is out of stock.");
       return prev;
@@ -170,6 +168,8 @@ const addToCart = (product) => {
       },
     ];
   });
+
+  alert(`${product.name} added to cart 🛒`);
 };
  const decreaseQty = (productId) => {
    setCartItems((prev) =>
