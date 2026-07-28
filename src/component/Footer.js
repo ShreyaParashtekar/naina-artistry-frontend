@@ -38,10 +38,31 @@ function Footer() {
           <h3>Follow Us</h3>
 
           <div className="social-icons">
-            <FaFacebookF />
-            <FaInstagram />
-            <FaTwitter />
-            <FaLinkedinIn />
+
+            <a
+              href="https://www.instagram.com/__naina.creation__?igsh=NGI0cnI4bTFnd2Jr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href="Shreya Parashtekar (@ShreyaPara73547) / X https://share.google/zkMKBbGRqS7hbhbFV"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/shreya-sanjay-parashtekar-744694270?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedinIn />
+            </a>
+
           </div>
         </div>
 
