@@ -83,7 +83,7 @@ function App() {
   const [sortBy, setSortBy] = useState("");
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
-
+  const [loading, setLoading] = useState(true);
 
 useEffect(() => {
   handleAddProduct();
@@ -184,16 +184,19 @@ const addToCart = (product) => {
  };
 
 const handleAddProduct = () => {
-  fetch("https://naina-artistry-backend.onrender.com/products")
+  setLoading(true);
+
+  fetch("https://naina-artistry-backend.onrender.com/products") // Change to your Render URL after deployment
     .then((res) => res.json())
     .then((data) => {
-      console.log("Products:", data);
-      console.log("First Product:", data[0]);
       setProducts(data);
+      setLoading(false);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      setLoading(false);
+    });
 };
-
   const toggleWishlist = (product) => {
     const exists = wishlistItems.find((item) => item.id === product.id);
 
@@ -230,18 +233,19 @@ const handleAddProduct = () => {
       <Route
         path="/"
         element={
-          <HomePage
-            products={products}
-            addToCart={addToCart}
-            search={search}
-            setSearch={setSearch}
-            priceFilter={priceFilter}
-            setPriceFilter={setPriceFilter}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-            wishlistItems={wishlistItems}
-            toggleWishlist={toggleWishlist}
-          />
+        <HomePage
+          loading={loading}
+          products={products}
+          addToCart={addToCart}
+          search={search}
+          setSearch={setSearch}
+          priceFilter={priceFilter}
+          setPriceFilter={setPriceFilter}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          wishlistItems={wishlistItems}
+          toggleWishlist={toggleWishlist}
+        />
         }
       />
         <Route
@@ -259,18 +263,19 @@ const handleAddProduct = () => {
        <Route
          path="/home"
          element={
-           <HomePage
-             products={products}
-             addToCart={addToCart}
-             search={search}
-             setSearch={setSearch}
-             priceFilter={priceFilter}
-             setPriceFilter={setPriceFilter}
-             sortBy={sortBy}
-             setSortBy={setSortBy}
-             wishlistItems={wishlistItems}
-             toggleWishlist={toggleWishlist}
-           />
+          <HomePage
+            loading={loading}
+            products={products}
+            addToCart={addToCart}
+            search={search}
+            setSearch={setSearch}
+            priceFilter={priceFilter}
+            setPriceFilter={setPriceFilter}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            wishlistItems={wishlistItems}
+            toggleWishlist={toggleWishlist}
+          />
          }
        />
 
