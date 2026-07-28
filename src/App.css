@@ -22,19 +22,16 @@ body{
 ========================= */
 
 .hero{
-
-    height:80vh;
-
+    min-height:80vh;
+    padding:40px 20px;
     background:url("https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1600")
     center/cover no-repeat;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     position:relative;
-}
 
+}
 .hero::before{
 
     content:"";
@@ -58,19 +55,13 @@ body{
 }
 
 .hero h1{
-
-    font-size:70px;
-
-    margin-bottom:20px;
-
+    font-size:64px;
+    line-height:1.2;
 }
 
 .hero p{
-
-    font-size:22px;
-
-    margin-bottom:30px;
-
+    font-size:20px;
+    line-height:1.7;
 }
 
 .hero button{
