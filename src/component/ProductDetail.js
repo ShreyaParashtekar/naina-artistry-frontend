@@ -127,7 +127,7 @@ fetch("https://naina-artistry-backend.onrender.com/reviews", {
     <div className="product-detail-container">
 
         {/* 🖼 IMAGE SECTION */}
-        <div className="product-image-container">
+        <div className="product-image-container"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
