@@ -113,17 +113,20 @@ function Checkout({ cartItems, setCartItems }) {
         display: "flex",
         justifyContent: "center",
         marginTop: "40px",
+        padding: "15px",
       }}
     >
-      <div
-        style={{
-          width: "450px",
-          background: "#fff",
-          padding: "25px",
-          borderRadius: "12px",
-          boxShadow: "0 5px 15px rgba(0,0,0,.15)",
-        }}
-      >
+     <div
+       style={{
+         width: "100%",
+         maxWidth: "450px",
+         background: "#fff",
+         padding: "20px",
+         borderRadius: "12px",
+         boxShadow: "0 5px 15px rgba(0,0,0,.15)",
+         boxSizing: "border-box",
+       }}
+     >
         <h2 style={{ textAlign: "center" }}>
           Checkout 🛒
         </h2>
@@ -136,11 +139,14 @@ function Checkout({ cartItems, setCartItems }) {
           cartItems.map((item, index) => (
             <div
               key={index}
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginBottom: "10px",
-              }}
+             style={{
+               display: "flex",
+               justifyContent: "space-between",
+               alignItems: "center",
+               flexWrap: "wrap",
+               gap: "5px",
+               marginBottom: "10px",
+             }}
             >
               <span>
                 {item.name} × {item.quantity}

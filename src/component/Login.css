@@ -75,3 +75,44 @@
 .registerLink span:hover{
     text-decoration:underline;
 }
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+.loginPage{
+    padding:20px 15px;
+}
+
+.loginCard{
+    width:100%;
+    max-width:380px;
+    padding:30px 20px;
+    border-radius:15px;
+}
+
+.loginCard h2{
+    font-size:30px;
+}
+
+.loginCard p{
+    font-size:15px;
+}
+
+.loginCard input{
+    padding:14px;
+    font-size:15px;
+}
+
+.loginCard button{
+    padding:14px;
+    font-size:16px;
+}
+
+.registerLink{
+    font-size:14px;
+}
+
+}

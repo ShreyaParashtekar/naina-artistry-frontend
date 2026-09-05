@@ -1,145 +1,170 @@
-.hero{
-    min-height:90vh;
+.hero {
+    min-height: 90vh;
 
-    background-image:url("https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1800");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+    background-image: url("https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=1800");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-    color:white;
+    color: white;
 
-    position:relative;
+    position: relative;
 
-    padding:20px;
+    padding: 20px;
+
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.45);
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, .45);
 }
 
-.hero-content{
-    position:relative;
-    z-index:1;
-    max-width:700px;
-    width:100%;
+.hero-content {
+    position: relative;
+    z-index: 1;
+
+    max-width: 700px;
+    width: 100%;
+
+    margin: 0 auto;
 }
 
-.hero-content h1{
-    font-size:64px;
-    line-height:1.2;
-    margin-bottom:20px;
+.hero-content h1 {
+    font-size: 64px;
+    line-height: 1.2;
+
+    margin-bottom: 20px;
+
+    word-wrap: break-word;
 }
 
-.hero-content p{
-    font-size:20px;
-    line-height:1.6;
-    margin-bottom:30px;
+.hero-content p {
+    font-size: 20px;
+    line-height: 1.6;
+
+    margin-bottom: 30px;
 }
 
-.shop-btn{
-    padding:16px 40px;
-    background:#c89b3c;
-    color:#fff;
-    border:none;
-    border-radius:40px;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
+.shop-btn {
+    padding: 16px 40px;
+
+    background: #c89b3c;
+    color: #fff;
+
+    border: none;
+    border-radius: 40px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: .3s;
 }
 
-.shop-btn:hover{
-    background:#111;
-    transform:translateY(-3px);
+.shop-btn:hover {
+    background: #111;
+    transform: translateY(-3px);
 }
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
 
 /* ==========================
    TABLET
 ========================== */
 
-@media(max-width:992px){
+@media (max-width: 992px) {
 
-.hero{
-    min-height:75vh;
+    .hero {
+        min-height: 75vh;
+    }
+
+    .hero-content {
+        max-width: 90%;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
 }
 
-.hero-content h1{
-    font-size:48px;
-}
-
-.hero-content p{
-    font-size:18px;
-}
-
-}
 
 /* ==========================
    MOBILE
 ========================== */
 
-@media(max-width:768px){
+@media (max-width: 768px) {
 
-.hero{
-    min-height:60vh;
-    padding:15px;
+    .hero {
+        min-height: 60vh;
+
+        padding: 30px 15px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+        line-height: 1.5;
+
+        padding: 0 10px;
+    }
+
+    .shop-btn {
+        width: 100%;
+        max-width: 260px;
+
+        padding: 14px;
+
+        font-size: 16px;
+    }
 }
 
-.hero-content h1{
-    font-size:36px;
-}
-
-.hero-content p{
-    font-size:16px;
-    padding:0 10px;
-}
-
-.shop-btn{
-    width:100%;
-    max-width:260px;
-    padding:14px;
-    font-size:16px;
-}
-
-}
 
 /* ==========================
    SMALL MOBILE
 ========================== */
 
-@media(max-width:480px){
+@media (max-width: 480px) {
 
-.hero{
-    min-height:55vh;
-}
+    .hero {
+        min-height: 55vh;
+        padding: 25px 12px;
+    }
 
-.hero-content h1{
-    font-size:28px;
-}
+    .hero-content h1 {
+        font-size: 30px;
+        line-height: 1.2;
+    }
 
-.hero-content p{
-    font-size:14px;
-}
+    .hero-content p {
+        font-size: 14px;
+        padding: 0 5px;
+    }
 
-.shop-btn{
-    font-size:15px;
-}
-
+    .shop-btn {
+        max-width: 230px;
+        font-size: 15px;
+    }
 }

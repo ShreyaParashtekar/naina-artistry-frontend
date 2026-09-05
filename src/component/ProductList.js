@@ -11,6 +11,7 @@ function ProductList({
   sortBy,
   wishlistItems,
   toggleWishlist,
+  cartItems,
 }) {
   const navigate = useNavigate();
 
@@ -31,7 +32,6 @@ function ProductList({
   }
 
   // Price Filter
-  // Price Filter
   if (priceFilter === "under20000") {
     filteredProducts = filteredProducts.filter(
       (p) => p.price < 20000
@@ -49,6 +49,7 @@ function ProductList({
       (p) => p.price > 100000
     );
   }
+
   // Sort Products
   let finalProducts = [...filteredProducts];
 
@@ -74,61 +75,89 @@ function ProductList({
 
       <div className="grid">
         {finalProducts.length > 0 ? (
-          finalProducts.map((product) => (
-            <div
-              className="card"
-              key={product.id}
-              onClick={() => navigate(`/product/${product.id}`)}
-            >
-              <div className="image-container">
-                <div
-                  className="wishlist-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleWishlist(product);
-                  }}
-                >
-                  {wishlistItems.some(
-                    (item) => item.id === product.id
-                  )
-                    ? "❤️"
-                    : "🤍"}
-                </div>
+          finalProducts.map((product) => {
 
+            // Find product in cart
+            const cartItem = cartItems.find(
+              (item) => item.id === product.id
+            );
 
+            // Quantity already added to cart
+            const cartQuantity = cartItem
+              ? cartItem.quantity
+              : 0;
 
-               <img
-                 src={product.imageUrl}
-                 alt={product.name}
-                 className="product-image"
-               />
-              </div>
+            // Remaining stock
+            const remainingStock =
+              Number(product.stock) - cartQuantity;
 
-              <div className="card-body">
-                <h3>{product.name}</h3>
+            return (
+              <div
+                className="card"
+                key={product.id}
+                onClick={() =>
+                  navigate(`/product/${product.id}`)
+                }
+              >
+                <div className="image-container">
 
-                <p>{product.description}</p>
-
-                <h2>₹{product.price.toLocaleString()}</h2>
-
-                {product.stock === 0 ? (
-                  <button className="stock-btn" disabled>
-                    Out of Stock
-                  </button>
-                ) : (
-                  <button
-                    className="cart-btn"
+                  {/* Wishlist */}
+                  <div
+                    className="wishlist-btn"
                     onClick={(e) => {
                       e.stopPropagation();
-                      addToCart(product);
+                      toggleWishlist(product);
                     }}
                   >
-                    Add to Cart
-                  </button>
-                )}
+                    {wishlistItems.some(
+                      (item) => item.id === product.id
+                    )
+                      ? "❤️"
+                      : "🤍"}
+                  </div>
+
+                  {/* Product Image */}
+                  <img
+                    src={product.imageUrl}
+                    alt={product.name}
+                    className="product-image"
+                  />
+                </div>
+
+                <div className="card-body">
+
+                  <h3>{product.name}</h3>
+
+                  <p>{product.description}</p>
+
+                  <h2>
+                    ₹{product.price.toLocaleString()}
+                  </h2>
+
+                  {/* Stock Check */}
+                  {remainingStock <= 0 ? (
+                    <button
+                      className="stock-btn"
+                      disabled
+                    >
+                      Out of Stock
+                    </button>
+                  ) : (
+                    <button
+                      className="cart-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        addToCart(product);
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                  )}
+
+                </div>
               </div>
-            </div>
-          ))
+            );
+          })
         ) : (
           <h3 className="no-products">
             No products found.

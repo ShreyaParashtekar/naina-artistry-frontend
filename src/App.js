@@ -126,7 +126,6 @@ useEffect(() => {
   }, [wishlistItems]);
 
 const addToCart = (product) => {
-
   const loggedIn = localStorage.getItem("userEmail");
 
   if (!loggedIn) {
@@ -135,11 +134,16 @@ const addToCart = (product) => {
     return;
   }
 
+  if (product.stock <= 0) {
+    alert("Product is out of stock.");
+    return;
+  }
+
   setCartItems((prev) => {
     const existing = prev.find((item) => item.id === product.id);
 
+    // Product already in cart
     if (existing) {
-
       if (existing.quantity >= product.stock) {
         alert(`Only ${product.stock} item(s) available in stock.`);
         return prev;
@@ -155,11 +159,7 @@ const addToCart = (product) => {
       );
     }
 
-    if (product.stock <= 0) {
-      alert("Product is out of stock.");
-      return prev;
-    }
-
+    // First item
     return [
       ...prev,
       {

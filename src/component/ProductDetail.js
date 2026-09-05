@@ -306,27 +306,26 @@ const imageStyle = {
 const arrowLeft = {
   position: "absolute",
   top: "50%",
-  left: "10px",
+  left: "5px",
   transform: "translateY(-50%)",
   background: "#0008",
   color: "#fff",
   border: "none",
-  padding: "10px",
+  padding: "8px",
   cursor: "pointer"
 };
 
 const arrowRight = {
   position: "absolute",
   top: "50%",
-  right: "10px",
+  right: "5px",
   transform: "translateY(-50%)",
   background: "#0008",
   color: "#fff",
   border: "none",
-  padding: "10px",
+  padding: "8px",
   cursor: "pointer"
 };
-
 const qtyBtn = {
   padding: "5px 10px",
   cursor: "pointer"

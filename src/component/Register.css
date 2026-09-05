@@ -103,25 +103,43 @@
 
 /* Mobile */
 
-@media(max-width:992px){
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
 
 .registerPage{
-    flex-direction:column;
-}
-
-.leftSide{
-    display:none;
-}
-
-.rightSide{
-    width:100%;
-    padding:30px 15px;
+    padding:20px 15px;
 }
 
 .registerCard{
     width:100%;
-    max-width:450px;
+    max-width:380px;
+    padding:30px 20px;
+    border-radius:15px;
+}
+
+.registerCard h1{
+    font-size:30px;
+}
+
+.registerCard p{
+    font-size:15px;
+}
+
+.registerCard input{
+    height:46px;
+    font-size:15px;
+}
+
+.registerCard button{
+    height:46px;
+    font-size:16px;
+}
+
+.loginText{
+    font-size:14px;
+}
 
 }
-}
-
