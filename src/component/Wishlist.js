@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Wishlist.css";
 
 function Wishlist({
   wishlistItems,
@@ -14,87 +15,87 @@ function Wishlist({
     );
   };
 
+  const handleAddToCart = (item) => {
+    addToCart(item);
+
+    setWishlistItems(
+      wishlistItems.filter((p) => p.id !== item.id)
+    );
+
+    alert("Added to Cart 🛒");
+  };
+
   return (
-    <div style={{ padding: "30px" }}>
+    <div className="wishlist-page">
 
-
-      <h2>❤️ My Wishlist</h2>
+      <h2 className="wishlist-title">❤️ My Wishlist</h2>
 
       {wishlistItems.length === 0 ? (
-        <h3>Your wishlist is empty.</h3>
+        <h3 className="empty-wishlist">
+          Your wishlist is empty.
+        </h3>
       ) : (
-        wishlistItems.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "20px",
-              background: "white",
-              marginBottom: "20px",
-              padding: "15px",
-              borderRadius: "10px",
-              boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
-            }}
-          >
-           <img
-             src={item.imageUrl}
-             alt={item.name}
-             style={{
-               width: "120px",
-               height: "120px",
-               objectFit: "cover",
-             }}
-           />
+        <div className="wishlist-list">
 
-            <div style={{ flex: 1 }}>
-<h3
-    onClick={() => navigate(`/product/${item.id}`)}
-    style={{ cursor: "pointer" }}
->
-    {item.name}
-</h3>              <p>{item.description}</p>
-              <h3>₹{item.price}</h3>
+          {wishlistItems.map((item) => (
+            <div className="wishlist-card" key={item.id}>
+
+              {/* PRODUCT IMAGE */}
+              <img
+                className="wishlist-image"
+                src={item.imageUrl}
+                alt={item.name}
+              />
+
+              {/* PRODUCT DETAILS */}
+              <div className="wishlist-details">
+
+                <h3
+                  className="wishlist-product-name"
+                  onClick={() =>
+                    navigate(`/product/${item.id}`)
+                  }
+                >
+                  {item.name}
+                </h3>
+
+                <p className="wishlist-description">
+                  {item.description}
+                </p>
+
+                <h3 className="wishlist-price">
+                  ₹{item.price}
+                </h3>
+
+              </div>
+
+              {/* ACTION BUTTONS */}
+              <div className="wishlist-actions">
+
+                <button
+                  className="wishlist-cart-btn"
+                  onClick={() => handleAddToCart(item)}
+                >
+                  Add to Cart
+                </button>
+
+                <button
+                  className="wishlist-remove-btn"
+                  onClick={() =>
+                    removeFromWishlist(item.id)
+                  }
+                >
+                  Remove
+                </button>
+
+              </div>
+
             </div>
+          ))}
 
-            <button
-onClick={() => {
-  addToCart(item);
-
-  setWishlistItems(
-    wishlistItems.filter((p) => p.id !== item.id)
-  );
-    alert("Added to Cart 🛒");
-
-}}              style={{
-                background: "#ff4081",
-                color: "white",
-                border: "none",
-                padding: "10px",
-                borderRadius: "5px",
-                cursor: "pointer",
-                marginRight: "10px"
-              }}
-            >
-              Add to Cart
-            </button>
-
-            <button
-              onClick={() => removeFromWishlist(item.id)}
-              style={{
-                background: "red",
-                color: "white",
-                border: "none",
-                padding: "10px",
-                borderRadius: "5px",
-                cursor: "pointer"
-              }}
-            >
-              Remove
-            </button>
-          </div>
-        ))
+        </div>
       )}
+
     </div>
   );
 }
