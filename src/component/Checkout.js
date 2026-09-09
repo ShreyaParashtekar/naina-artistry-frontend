@@ -64,11 +64,31 @@ function Checkout({ cartItems, setCartItems }) {
       return;
     }
 
-    if (address.trim() === "") {
+    const trimmedAddress = address.trim();
+
+    // Address should not be empty
+    if (trimmedAddress === "") {
       alert("Please enter your delivery address.");
       return;
     }
 
+    // Minimum length
+    if (trimmedAddress.length < 10) {
+      alert("Please enter a valid delivery address.");
+      return;
+    }
+
+    // Must contain at least one letter
+    if (!/[A-Za-z]/.test(trimmedAddress)) {
+      alert("Address must contain letters.");
+      return;
+    }
+
+    // Must contain at least one number
+    if (!/[0-9]/.test(trimmedAddress)) {
+      alert("Please enter a complete address with house number and pincode.");
+      return;
+    }
 
     // Save updated address if user edits it
     localStorage.setItem("address", address);

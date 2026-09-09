@@ -66,7 +66,7 @@ function ProductList({
   }
 
   return (
-    <div className="products-section">
+    <div className="products-section" id="products">
       <h2 className="section-title">
         {category
           ? `${category.charAt(0).toUpperCase() + category.slice(1)} Collection`
@@ -78,9 +78,9 @@ function ProductList({
           finalProducts.map((product) => {
 
             // Find product in cart
-            const cartItem = cartItems.find(
-              (item) => item.id === product.id
-            );
+           const cartItem = (cartItems || []).find(
+             (item) => item.id === product.id
+           );
 
             // Quantity already added to cart
             const cartQuantity = cartItem
@@ -109,7 +109,7 @@ function ProductList({
                       toggleWishlist(product);
                     }}
                   >
-                    {wishlistItems.some(
+                    {(wishlistItems || []).some(
                       (item) => item.id === product.id
                     )
                       ? "❤️"

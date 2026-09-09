@@ -17,23 +17,87 @@ function Register() {
 const navigate = useNavigate();
 
 const handleRegister = async () => {
+
+  // Name validation
+  if (user.name.trim() === "") {
+    alert("Please enter your name");
+    return;
+  }
+
+  if (user.name.trim().length < 2) {
+    alert("Name must contain at least 2 characters");
+    return;
+  }
+
+  const namePattern = /^[A-Za-z ]+$/;
+
+  if (!namePattern.test(user.name.trim())) {
+    alert("Name should contain only letters");
+    return;
+  }
+
+  // Email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(user.email)) {
+    alert("Please enter a valid email address");
+    return;
+  }
+
+  // Password validation
+  if (user.password.length < 8) {
+    alert("Password must be at least 8 characters");
+    return;
+  }
+
+  if (!/[A-Z]/.test(user.password)) {
+    alert("Password must contain at least one uppercase letter");
+    return;
+  }
+
+  if (!/[a-z]/.test(user.password)) {
+    alert("Password must contain at least one lowercase letter");
+    return;
+  }
+
+  if (!/[0-9]/.test(user.password)) {
+    alert("Password must contain at least one number");
+    return;
+  }
+
   try {
-const response = await fetch("https://naina-artistry-backend.onrender.com/users/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
+    const response = await fetch(
+      "https://naina-artistry-backend.onrender.com/users/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    );
 
     if (response.ok) {
+      alert("Registration successful!");
       navigate("/login");
-    } else {
-      const data = await response.text();
-      console.log(data);
-    }
+   } else {
+     const data = await response.text();
+     console.log(data);
+
+     if (
+       response.status === 409 ||
+       data.toLowerCase().includes("already") ||
+       data.toLowerCase().includes("exist")
+     ) {
+       alert("Email already registered. Please login.");
+     } else {
+       alert("Registration failed. Please try again.");
+     }
+   }
+
   } catch (error) {
     console.error(error);
+    alert("Unable to connect to server");
   }
 };
   return (

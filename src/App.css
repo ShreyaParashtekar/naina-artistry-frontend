@@ -589,3 +589,42 @@ max-width:350px;
     background:#c62828;
 }
 
+/* FINAL MOBILE SAFETY FIX */
+
+html,
+body,
+#root {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+
+    #root {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .top-header,
+    .sticky-navbar,
+    .hero,
+    .products-section,
+    .footer {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}

@@ -37,9 +37,17 @@ function StickyNavbar({
           type="text"
           placeholder="Search Jewellery..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+          onChange={(e) => {
+            setSearch(e.target.value);
 
+            setTimeout(() => {
+              document.getElementById("products")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }, 100);
+          }}
+        />
         <select
           value={priceFilter}
           onChange={(e) => setPriceFilter(e.target.value)}
