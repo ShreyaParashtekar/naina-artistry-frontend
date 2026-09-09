@@ -206,3 +206,170 @@
 .review-form{
     padding:15px;
 }
+
+
+@media (max-width: 768px) {
+
+    .product-detail {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px 10px;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .product-container {
+        width: 100%;
+        max-width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 20px;
+
+        box-sizing: border-box;
+    }
+
+    .product-image-section {
+        width: 100%;
+        max-width: 100%;
+
+        box-sizing: border-box;
+    }
+
+    .product-detail .product-image {
+        width: 100%;
+        max-width: 260px;
+
+        height: auto;
+
+        display: block;
+
+        margin: 0 auto;
+    }
+
+    .product-info {
+        width: 100%;
+        max-width: 100%;
+
+        text-align: center;
+
+        box-sizing: border-box;
+    }
+
+    .product-info h2 {
+        font-size: 25px;
+        line-height: 1.3;
+
+        margin: 10px 0;
+    }
+
+    .product-info p {
+        font-size: 14px;
+        line-height: 1.5;
+
+        margin: 8px 0;
+    }
+
+    .price {
+        font-size: 24px;
+        margin: 12px 0;
+    }
+
+    .quantity-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 12px;
+
+        margin: 15px 0;
+    }
+
+    .qty-btn {
+        width: 38px;
+        height: 38px;
+
+        font-size: 18px;
+    }
+
+    .action-buttons {
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+
+        justify-content: center;
+
+        gap: 8px;
+
+        box-sizing: border-box;
+    }
+
+    .action-buttons .cart-btn,
+    .action-buttons .buy-btn {
+        width: 48%;
+
+        max-width: 150px;
+
+        padding: 11px 8px;
+
+        font-size: 13px;
+
+        box-sizing: border-box;
+    }
+
+    .related-products {
+        width: 100%;
+        margin-top: 35px;
+    }
+
+    .related-grid {
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        width: 100%;
+    }
+
+    .related-card {
+        width: 100%;
+        max-width: 100%;
+
+        box-sizing: border-box;
+    }
+
+    .related-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .review-form {
+        width: 100%;
+
+        margin-top: 30px;
+        padding: 15px;
+
+        box-sizing: border-box;
+    }
+
+    .review-form input,
+    .review-form textarea,
+    .review-form select {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        font-size: 14px;
+    }
+
+    .review-card {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 12px;
+    }
+}
