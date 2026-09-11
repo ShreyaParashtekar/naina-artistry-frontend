@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import ProductList from "./component/ProductList";
@@ -130,7 +130,7 @@ const addToCart = (product) => {
 
   if (!loggedIn) {
     alert("Please login to add products to cart.");
-    window.location.href = "/login";
+    window.location.href = "/#/login";
     return;
   }
 
@@ -210,7 +210,7 @@ const handleAddProduct = () => {
   };
 
   return (
-   <Router>
+   <HashRouter>
 
      <TopHeader
        isLoggedIn={isLoggedIn}
@@ -381,7 +381,7 @@ const handleAddProduct = () => {
       </Routes>
 
       <Footer />
-    </Router>
+    </HashRouter>
   );
 }
 
