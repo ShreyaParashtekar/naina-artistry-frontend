@@ -95,11 +95,20 @@ const downloadInvoice = (order) => {
 
             <p>
               <b>Status:</b>
-              <span style={{ color: "green" }}>
-                {" "}Placed ✅
+              <span
+                style={{
+                  color:
+                    order.status === "Delivered"
+                      ? "green"
+                      : order.status === "Shipped"
+                      ? "#1976d2"
+                      : "#ff9800",
+                  fontWeight: "bold",
+                }}
+              >
+                {" "}{order.status} ✅
               </span>
             </p>
-
             <hr />
 
            {JSON.parse(order.items).map((item) => (
